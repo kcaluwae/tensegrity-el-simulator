@@ -189,7 +189,7 @@ lambda_err_and_grad = lambda y, _lambda: (lambda_err(y,_lambda),lambda_err_grad(
 #line search for the optimal Langrange multiplier value (lambda)
 def find_lambda(y):
     err_f = lambda _lambda: lambda_err_and_grad(y,_lambda)
-    res = so.minimize(err_f,0,tol=1e-12,jac=True,method='TNC') #Truncated Newton is fastest in practice
+    res = so.minimize(err_f,[0],tol=1e-12,jac=True,method='TNC') #Truncated Newton is fastest in practice
     if(not res.success):
             print "WARNING: lambda optimization not successful!"
             
